@@ -9,6 +9,50 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<!-- web-font CSS -->
 	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+	<!-- JQuery를 import 합니다 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+		function order() {
+			let first_tr = $('tbody tr td:nth-child(1)');
+			let second_tr = $('tbody tr td:nth-child(2)');
+			let third_tr = $('tbody tr td:nth-child(3)');
+			let fourth_tr = $('tbody tr td:nth-child(4)');
+
+			let name = $('#exampleInputName').val();
+			let count = $('#exampleFormControlSelect1').val();
+			let addr = $('#exampleInputAddr').val();
+			let tel = $('#exampleInputTel').val();
+
+			let regExp = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
+			if(name ==''){
+				alert('성함을 입력해주세요!');
+				$('#exampleInputName').focus();
+				return false;
+			}else if(count ==''){
+				alert('수량을 입력해주세요!');
+				$('#exampleFormControlSelect1').focus();
+				return false;
+			}else if(addr ==''){
+				alert('주소를 입력해주세요!');
+				$('#exampleInputAddr').focus();
+				return false;
+			}else if(tel ==''){
+				alert('전화번호를 입력해주세요!');
+				$('#exampleInputTel').focus();
+				return false;
+			}else if(!regExp.test(tel)){
+		    	alert("잘못된 휴대폰 번호입니다. 숫자, -를 제외한 숫자만 입력하세요.");
+		    	return false;
+			}
+			else{
+				first_tr.html(name);
+				second_tr.html(count);
+				third_tr.html(addr);
+				fourth_tr.html(tel);
+				return false;
+			}
+		}
+	</script>
 </head>
 <body>
 	<div class="wrap">
@@ -25,6 +69,7 @@
 				</ul>
 			</div>
 		</header>
+
 		<div class="main">
 			<div class="pro-img"><img src="images/product-img01.png" alt="상품이미지01"></div>
 			<div class="pro-img"><img src="images/product-img02.png" alt="상품이미지02"></div>
@@ -45,8 +90,14 @@
 					<input type="text" class="form-control" id="exampleInputName" aria-describedby="basic-addon1">
 				</div>
 				<div class="form-group">
-					<label for="exampleInputNumber">수량 :</label>
-					<input type="number" class="form-control" id="exampleInputNumber" aria-describedby="basic-addon1">
+					<label for="exampleFormControlSelect1">수량 :</label>
+					<select class="form-control" id="exampleFormControlSelect1">
+						<option value="">--- 수량을 선택하세요 ---</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
 				</div>
 				<div class="form-group">
 					<label for="exampleInputAddr">주소 :</label>
@@ -56,9 +107,34 @@
 					<label for="exampleInputTel">전화번호 :</label>
 					<input type="text" class="form-control" id="exampleInputTel" placeholder="'-'를 제외하고 적어주세요." aria-describedby="basic-addon1">
 				</div>
-				<button type="submit" class="btn btn-primary">주문하기</button>
+				<button onclick="order()" class="btn btn-primary">주문하기</button>
 			</form>
+			<table>
+				<colgroup>
+					<col class="col01">
+					<col class="col02">
+					<col class="col03">
+					<col class="col04">
+				</colgroup>
+				<thead>
+					<tr>
+						<th>이름</th>
+						<th>수량</th>
+						<th>주소</th>
+						<th>전화번호</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
+
 		<footer class="footer">
 			<div class="footer-container">
 				<h1 class="hidden">Lush</h1>

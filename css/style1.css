@@ -88,6 +88,11 @@ a{text-decoration: none;}
 	width: calc(100% - 120px);
 	font-size: 1.1rem;
 }
+.main .form-group select{
+	display: inline-block;
+	width: calc(100% - 120px);
+	font-size: 1.1rem;
+}
 .main form button{
 	display: block;
 	width: 300px; height: 50px;
@@ -98,6 +103,36 @@ a{text-decoration: none;}
 .main form button:hover{
 	background: #9981bb;
 	border-color: #9981bb;
+}
+/*테이블 css*/
+table{
+	table-layout: fixed;
+	width: 868px;
+	margin: 80px auto;
+}
+table .col01{
+	width: 20%;
+}
+table .col02{
+	width: 15%;
+}
+table .col03{
+	width: 35%;
+}
+table .col04{
+	width: 30%;
+}
+table thead tr{
+	height: 40px;
+	border-top: 1px solid #ced4da;
+	border-bottom: 2px solid #ced4da;
+}
+table tbody tr{
+	height: 40px;
+	border-bottom: 1px solid #ced4da;
+}
+table th, td{
+	padding: 0 0 0 15px;
 }
 
 
