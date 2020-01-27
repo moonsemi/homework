@@ -13,17 +13,12 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script>
 		function order() {
-			let first_tr = $('tbody tr td:nth-child(1)');
-			let second_tr = $('tbody tr td:nth-child(2)');
-			let third_tr = $('tbody tr td:nth-child(3)');
-			let fourth_tr = $('tbody tr td:nth-child(4)');
-
 			let name = $('#exampleInputName').val();
 			let count = $('#exampleFormControlSelect1').val();
 			let addr = $('#exampleInputAddr').val();
 			let tel = $('#exampleInputTel').val();
-
 			let regExp = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/;
+			
 			if(name ==''){
 				alert('성함을 입력해주세요!');
 				$('#exampleInputName').focus();
@@ -44,13 +39,14 @@
 		    	alert("잘못된 휴대폰 번호입니다. 숫자, -를 제외한 숫자만 입력하세요.");
 		    	return false;
 			}
-			else{
-				first_tr.html(name);
-				second_tr.html(count);
-				third_tr.html(addr);
-				fourth_tr.html(tel);
-				return false;
-			}
+			let table_tamp =  '<tr>\
+				<td>' + name + '</td>\
+				<td>' + count + '</td>\
+				<td>' + addr + '</td>\
+				<td>' + tel + '</td>\
+				</tr>';
+			$('#order_table').append(table_tamp);
+			return false;
 		}
 	</script>
 </head>
@@ -124,13 +120,7 @@
 						<th>전화번호</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
+				<tbody id="order_table">
 				</tbody>
 			</table>
 		</div>
