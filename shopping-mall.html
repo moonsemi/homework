@@ -12,7 +12,7 @@
 	<!-- JQuery를 import 합니다 -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script>
-		function order() {
+		function order(reset) {
 			let name = $('#exampleInputName').val();
 			let count = $('#exampleFormControlSelect1').val();
 			let addr = $('#exampleInputAddr').val();
@@ -46,7 +46,7 @@
 				<td>' + tel + '</td>\
 				</tr>';
 			$('#order_table').append(table_tamp);
-			return false;
+			$('#form-container')[0].reset();
 		}
 	</script>
 </head>
@@ -80,7 +80,7 @@
 				</p>
 			</div>
 			<h1 class="display-4 order">주문하기</h1>
-			<form>
+			<form id="form-container">
 				<div class="form-group">
 					<label for="exampleInputName">주문자 성함 :</label>
 					<input type="text" class="form-control" id="exampleInputName" aria-describedby="basic-addon1">
