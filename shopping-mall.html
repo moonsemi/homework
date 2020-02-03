@@ -12,6 +12,30 @@
 	<!-- JQuery를 import 합니다 -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script>
+		$(document).ready(function(){
+			// ajax 코드
+			$.ajax({
+				type: "GET",
+				url: "http://spartacodingclub.shop/order",
+				data: {},
+				success: function(response){
+					let orders = response['orders'];
+					for (let i = 0; i < orders.length; i++) {
+						order_list(orders[i]['address'],orders[i]['count'],orders[i]['name'],orders[i]['phone'])
+					}
+				}
+			})
+
+			function order_list(address,count,name,phone) {
+				let temp_html = '<tr>\
+								<td>' + address + '</td>\
+								<td>' + count + '</td>\
+								<td>' + name + '</td>\
+								<td>' + phone + '</td>\
+								</tr>';
+				$('#order_table').append(temp_html);
+			}
+		});
 		function order() {
 			let name = $('#exampleInputName').val();
 			let count = $('#exampleFormControlSelect1').val();
