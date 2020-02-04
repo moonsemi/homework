@@ -25,17 +25,18 @@
 					}
 				}
 			})
-
-			function order_list(address,count,name,phone) {
-				let temp_html = '<tr>\
-								<td>' + address + '</td>\
-								<td>' + count + '</td>\
-								<td>' + name + '</td>\
-								<td>' + phone + '</td>\
-								</tr>';
-				$('#order_table').append(temp_html);
-			}
 		});
+
+		function order_list(address,count,name,phone) {
+			let temp_html = '<tr>\
+							<td>' + address + '</td>\
+							<td>' + count + '</td>\
+							<td>' + name + '</td>\
+							<td>' + phone + '</td>\
+							</tr>';
+			$('#order_table').append(temp_html);
+		}
+			
 		function order() {
 			let name = $('#exampleInputName').val();
 			let count = $('#exampleFormControlSelect1').val();
